@@ -42,6 +42,36 @@ class PertanyaanController extends Controller
 		return view('/pertanyaan/read', ['pertanyaan' => $pertanyaan],['jawaban' => $jawaban ]);
 	}
 
+	public function vote($id)
+	{
+		$pertanyaan = DB::table('questions')->get();
+
+		$pertanyaan2 = DB::table('questions')->where('id_pertanyaan', $id)->get()[0];
+		//dd($pertanyaan2);
+		$vote = $pertanyaan2->upvote + 1;
+		$id_user = $pertanyaan2->id_user;
+		$judul = $pertanyaan2->judul;
+		$body = $pertanyaan2->pertanyaan;
+		$tag = $pertanyaan2->tag;
+		DB::table('questions')->where('id_pertanyaan', $id)->update([
+			'upvote' => $vote,
+			'id_user' => $id_user,
+			'judul' =>$judul,
+			'pertanyaan' => $body,
+			'tag' => $tag
+		]);
+
+return 	redirect()->back();
+
+		// return view('/pertanyaan/ask_question', ['pertanyaan' => $pertanyaan]);
+	}
+
+	public function ask_question()
+	{
+		$pertanyaan = DB::table('questions')->get();
+		return view('/pertanyaan/ask_question', ['pertanyaan' => $pertanyaan]);
+	}
+
     public function store(Request $request)
 	{
 		

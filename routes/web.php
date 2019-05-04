@@ -45,6 +45,8 @@ Route::get('/pertanyaan','PertanyaanController@index')->name('pertanyaan');
 Route::post('/pertanyaan/store','PertanyaanController@store')->name('pertanyaan.store');
 Route::get('/pertanyaan/read/{id_pertanyaan}', 'PertanyaanController@read');
 Route::get('/pertanyaan/tambah', 'PertanyaanController@tambah')->name('pertanyaan.tambah');
+Route::get('/pertanyaan/ask_question', 'PertanyaanController@ask_question')->name('pertanyaan.ask_question');
+Route::get('/pertanyaan/vote/{id_pertanyaan}','PertanyaanController@vote')->name('pertanyaan.vote');
 
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/', function () {
