@@ -101,7 +101,7 @@
                   		</tr>
 	               
 							<tr>
-								<td style="padding: 10px 10px 10px 0px;"><a href="{{ URL('/pertanyaan/read/'.$p->id_pertanyaan )}}">{{ $p->pertanyaan }}</a></td>
+								<td style="padding: 10px 10px 10px 0px;"><a href="{{ URL('/pertanyaan/read/'.$p->id_pertanyaan )}}">{{ $p->body }}</a></td>
 
 								<td style="text-align: center; padding: 15px;">{{ $p->upvote }}</td>
 							</tr>

@@ -29,6 +29,13 @@ class PertanyaanController extends Controller
 		return view('/pertanyaan/tambah');
 	 
 	}
+
+	public function read($id)
+	{
+		$pertanyaan = DB::table('questions')->where('id_pertanyaan', $id)->get();
+		return view('/pertanyaan/read', ['pertanyaan' => $pertanyaan]);
+	}
+
     public function store(Request $request)
 	{
 		
@@ -36,10 +43,10 @@ class PertanyaanController extends Controller
 		$request->upvote = 0;
 		DB::table('questions')->insert([
 			'id_user' => $request->id,
-			'judul' => $request->judul,
-			'pertanyaan' => $request->pertanyaan,
+			'title' => $request->judul,
+			'body' => $request->pertanyaan,
 			'upvote' => $request->upvote,
-			'tag'=>$request->tag
+			//'tag'=>$request->tag
 		]);
 		
 		return redirect('/pertanyaan');
