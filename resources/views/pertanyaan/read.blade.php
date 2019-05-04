@@ -119,7 +119,7 @@
         </div>
     </div>
     <div id="answer-header" class="p-15 mb-1">
-        <h5>1 Answer</h5>
+        <h5>{{ count($jawaban) }} Answers</h5>
     </div>
     @foreach ($jawaban as $data)
     <div id="answer-view">
@@ -148,7 +148,7 @@
             <div class="collapse" id="collapseKomentar">
                 <form action="{{ route('comment.create')}}" method="post" class="" enctype="multipart/form-data">
                     {{ csrf_field()}}
-                    <input type="hidden" name="id" value="{{ $jawaban->id_jawaban }}">
+                    <input type="hidden" name="id" value="{{ $data->id_jawaban }}">
                     <input type="hidden" name="flag" value="1">
                     <div class="form-group">
                         <textarea class="form-control inp" name="komentarmu" id='article-ckeditor' cols="" rows="3"
