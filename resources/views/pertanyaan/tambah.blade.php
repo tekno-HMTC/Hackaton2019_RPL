@@ -25,10 +25,10 @@
 						<label for="" class="text mt-1" style="font-size: 20px;">Judul</label>
 						<input type="text" class="form-control inp" name="judul" placeholder="Judul" required>
 					</div>
-					{{-- <div class="form-group has-feedback">
+					<div class="form-group has-feedback">
 						<label for="" class="text mt-1" style="font-size: 20px;">Tag</label>
 						<input type="text" class="form-control inp" name="tag" placeholder="Tag" required>
-					</div> --}}
+					</div>
 					<div class="form-group has-feedback">
 						<label for="" class="tex" style="font-size: 20px;">Pertanyaan</label>
 						<textarea class="form-control inp" name="pertanyaan" id='article-ckeditor' cols="" rows="5" placeholder="Pertanyaan" required></textarea>

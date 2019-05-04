@@ -33,6 +33,7 @@ class PertanyaanController extends Controller
 	public function read($id)
 	{
 		$pertanyaan = DB::table('questions')->where('id_pertanyaan', $id)->get();
+		return $pertanyaan;
 		return view('/pertanyaan/read', ['pertanyaan' => $pertanyaan]);
 	}
 

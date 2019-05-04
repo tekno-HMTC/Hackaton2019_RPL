@@ -39,14 +39,15 @@ class CommentController extends Controller
      */
     public function create(Request $request)
     {
+        return $request;
         //dari Auth harusnya
         $id_user = Auth::id();
 
         $comment = new Comment();
-        $comment->id_tanya_jawab = 1;
+        $comment->id_tanya_jawab = $request->id;
         $comment->id_user = $id_user;
-        $comment->flag = 1;
-        $comment->komentar = $request['komentar'];
+        $comment->flag = $request->flag;
+        $comment->komentar = $request->komentarmu;
 
         $comment->save();
         // dd($id_user);

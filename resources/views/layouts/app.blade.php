@@ -111,7 +111,7 @@
 
       <!-- Nav Item - Charts -->
       <li class="nav-item">
-        <a class="nav-link" href="{{url('/pertanyaan')}}">
+        <a class="nav-link" href="charts.html">
           <i class="fas fa-fw fa-question"></i>
           <span>Ask Questions</span></a>
       </li>
