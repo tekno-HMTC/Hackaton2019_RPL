@@ -45,10 +45,10 @@ class PertanyaanController extends Controller
 		$request->upvote = 0;
 		DB::table('questions')->insert([
 			'id_user' => $request->id,
-			'title' => $request->judul,
-			'body' => $request->pertanyaan,
+			'judul' => $request->judul,
+			'pertanyaan' => $request->pertanyaan,
 			'upvote' => $request->upvote,
-			//'tag'=>$request->tag
+			'tag'=>$request->tag
 		]);
 		
 		return redirect('/pertanyaan');
