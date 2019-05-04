@@ -98,6 +98,7 @@
                 <div class="collapse" id="collapseKomentar">
                     <form action="{{ route('pertanyaan.store')}}" method="post" class="" enctype="multipart/form-data">
                         {{ csrf_field()}}
+                        <input type="hidden" name="id_post" value="{{$id}}">
                         <div class="form-group">
                             <textarea class="form-control inp" name="apa komentarmu" id='article-ckeditor' cols="" rows="3"
                                 placeholder="Pertanyaan" required></textarea>
