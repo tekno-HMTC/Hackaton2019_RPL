@@ -57,3 +57,18 @@ Route::group(['middleware' => ['auth']], function() {
 	// Route::get('/looklocation/{id}','HomeController@looklocation');
 	// Route::post('/editprofile','LoginRegister@editprofile');
 });
+
+Route::post('/answer/store',function(Request $request){
+    // return $request;   		
+    $request->id = Auth::id();
+    $request->upvote = 0;
+    DB::table('answers')->insert([
+        'id_user' => $request->id,
+        'id_pertanyaan' => $request->id_pertanyaan,
+        'body' => $request->jawaban,
+        'upvote' => $request->upvote,
+    ]);
+    
+    return $request;
+    
+})->name('answer.store');
