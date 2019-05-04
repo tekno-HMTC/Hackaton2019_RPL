@@ -38,7 +38,9 @@ class PertanyaanController extends Controller
 		$pertanyaan->komentar = DB::table('comments')->where([['id_tanya_jawab', $id],['flag', '1']])->get();
 		
 		$jawaban = DB::table('answers')->where('id_pertanyaan', $id)->get();
+		
 		// return $jawaban;
+
 		return view('/pertanyaan/read', ['pertanyaan' => $pertanyaan],['jawaban' => $jawaban ]);
 	}
 
