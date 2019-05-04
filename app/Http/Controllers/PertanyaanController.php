@@ -17,7 +17,8 @@ class PertanyaanController extends Controller
      public function index()
     {
     	$id = Auth::id();
-    	$pertanyaan = DB::table('questions')->where('id_user', $id)->get();
+		$pertanyaan = DB::table('questions')->where('id_user', $id)->get();
+		
     	return view('/pertanyaan/index',['pertanyaan' => $pertanyaan]);
  
     }
@@ -32,8 +33,8 @@ class PertanyaanController extends Controller
 
 	public function read($id)
 	{
-		$pertanyaan = DB::table('questions')->where('id_pertanyaan', $id)->get();
-		return $pertanyaan;
+		$pertanyaan = DB::table('questions')->where('id_pertanyaan', $id)->get()[0];
+		// return $pertanyaan;
 		return view('/pertanyaan/read', ['pertanyaan' => $pertanyaan]);
 	}
 

@@ -74,7 +74,7 @@
 @section('content')
 <div class="container">
     <div id="question-header" class="p-15 mb-1">
-        <h2>{{ $pertanyaan->title }}</h2>
+        <h2>{{ $pertanyaan->judul }}</h2>
     </div>
     <div id="question-view">
         <div class="post-layout row p-10">
@@ -86,7 +86,7 @@
             </div>
             <div class="postcell col">
                 <div id="dummy">
-                    <p>{{ $pertanyaan->body }}</p>
+                    <p>{{ $pertanyaan->pertanyaan }}</p>
                 </div>
                 <div class="tags m-b-20">
                     <span class="badge tag">javascript</span>
