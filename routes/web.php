@@ -79,4 +79,3 @@ Route::post('/answer/store',function(Request $request){
     return 	redirect()->back();
     
 })->name('answer.store');
->>>>>>> master
