@@ -45,11 +45,14 @@
 					</div>
 				</div>
 	    			@foreach ($artikel as $post)
+	    				@php
+							$nama = App\user::find($post->id_user);
+						@endphp
 		            	<div class="card mb-4 border-left-info shadow">
 			                <div class="card-header card-header-padding">
-								<a class="post-title" href="" style="font-size: 20px; font-weight: bold; text-align: text-center;">{{ $post->judul}} </a> <br>
+								<a class="post-title" href="{{ url('/post/'.$post->id_artikel) }}" style="font-size: 20px; font-weight: bold; text-align: text-center;">{{ $post->judul}} </a> <br>
 								<small>
-									{{ $post->created_at->diffForHumans()}} {{ date('F d, Y',strtotime($post->created_at)) }} at {{ date('g:ia',strtotime($post->created_at)) }} by <a href=""> {{ $post->id_user}}</a>
+									{{ $post->created_at->diffForHumans()}} {{ date('F d, Y',strtotime($post->created_at)) }} at {{ date('g:ia',strtotime($post->created_at)) }} by <a href=""> {{ $nama->name }}</a>
 								</small>
 			                		{{-- @if($post->comments()->get()->count()==1){{$post->comments()->get()->count()}} Komentar
 			                		@endif
@@ -72,21 +75,20 @@
 			                </div>
 			                <div class="card-body">
 			                    <p>
-			                    	{{ str_limit($post->isi_artikel, 300, ' ....')}}
+			                    	{{ str_limit($post->isi_artikel, 300, ' ....')}} 
+			                    	<a href="{{ url('/post/'.$post->id_artikel) }}">Baca Selengkapnya</a>
 								</p>
 								<p>
-									{{-- @if( Auth::user()->username == $post->user->username)
+									@if( Auth::user()->id == $post->id_user)
 									<div class="form-inline">
-										<a href="{{ route('post.edit', $post)}}" style="margin-right: 6px;">
-											<button type="submit" class="btn btn-lg btn-outline-success">Edit</button> 
+										<a href="{{ url('/post/edit/'.$post->id_artikel) }}" style="margin-right: 6px;">
+											<button type="submit" class="btn btn-md btn-outline-success">Edit</button> 
 										</a><br>
-										<form class="" action="{{ route('post.destroy', $post)}}" method="post">
-											{{ csrf_field()}}
-											{{ method_field('DELETE')}}
-											<button type="submit" class="btn btn-lg btn-outline-danger">Delete</button> 
-										</form>
+										<a href="{{ url('/post/delete/'.$post->id_artikel) }}" style="margin-right: 6px;">
+											<button type="submit" class="btn btn-md btn-outline-danger">Hapus</button> 
+										</a><br>
 									</div>
-									@endif --}}
+									@endif
 								</p>
 			                </div>
 			            </div>

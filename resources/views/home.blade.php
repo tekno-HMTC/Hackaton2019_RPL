@@ -15,7 +15,7 @@
                                 <div class="row justify-content-center">
                                     <a class="btn btn-primary btn-sm mr-2" href="{{ url('pertanyaan') }}">Questions <strong>10</strong></a>
                                     <a class="btn btn-warning btn-sm" href="#menu2">Answers <strong>10</strong></a>
-                                    <a class="btn btn-success btn-sm ml-2"  href="#menu3">Articles <strong>10</strong></a>
+                                    <a class="btn btn-success btn-sm ml-2"  href="{{ url('artikel')}}">Articles <strong>10</strong></a>
                                 </div>
                             </div>
                         </div>
