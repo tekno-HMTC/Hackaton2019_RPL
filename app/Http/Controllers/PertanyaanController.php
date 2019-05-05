@@ -35,7 +35,71 @@ class PertanyaanController extends Controller
 	{
 		$pertanyaan = DB::table('questions')->where('id_pertanyaan', $id)->get()[0];
 		// return $pertanyaan;
-		return view('/pertanyaan/read', ['pertanyaan' => $pertanyaan]);
+		$pertanyaan->komentar = DB::table('comments')->where([['id_tanya_jawab', $id],['flag', '1']])->get();
+		
+		$jawaban = DB::table('answers')->where('id_pertanyaan', $id)->get();
+		
+		foreach($jawaban as $data){
+			$data->komentar = DB::table('comments')->where([['id_tanya_jawab', $data->id_jawaban],['flag', '2']])->get();
+		}
+
+		// dd($jawaban);
+
+		return view('/pertanyaan/read', ['pertanyaan' => $pertanyaan],['jawaban' => $jawaban ]);
+	}
+
+	public function vote($id)
+	{
+		$pertanyaan = DB::table('questions')->get();
+
+		$pertanyaan2 = DB::table('questions')->where('id_pertanyaan', $id)->get()[0];
+		//dd($pertanyaan2);
+		$vote = $pertanyaan2->upvote + 1;
+		$id_user = $pertanyaan2->id_user;
+		$judul = $pertanyaan2->judul;
+		$body = $pertanyaan2->pertanyaan;
+		$tag = $pertanyaan2->tag;
+		DB::table('questions')->where('id_pertanyaan', $id)->update([
+			'upvote' => $vote,
+			'id_user' => $id_user,
+			'judul' =>$judul,
+			'pertanyaan' => $body,
+			'tag' => $tag
+		]);
+
+	return 	redirect()->back();
+
+		// return view('/pertanyaan/ask_question', ['pertanyaan' => $pertanyaan]);
+	}
+
+	public function unvote($id)
+	{
+		$pertanyaan = DB::table('questions')->get();
+
+		$pertanyaan2 = DB::table('questions')->where('id_pertanyaan', $id)->get()[0];
+		//dd($pertanyaan2);
+		$vote = $pertanyaan2->upvote - 1;
+		$id_user = $pertanyaan2->id_user;
+		$judul = $pertanyaan2->judul;
+		$body = $pertanyaan2->pertanyaan;
+		$tag = $pertanyaan2->tag;
+		DB::table('questions')->where('id_pertanyaan', $id)->update([
+			'upvote' => $vote,
+			'id_user' => $id_user,
+			'judul' =>$judul,
+			'pertanyaan' => $body,
+			'tag' => $tag
+		]);
+
+	return 	redirect()->back();
+
+		// return view('/pertanyaan/ask_question', ['pertanyaan' => $pertanyaan]);
+	}
+
+	public function ask_question()
+	{
+		$pertanyaan = DB::table('questions')->orderBy('upvote', 'desc')->paginate(5);
+		return view('/pertanyaan/ask_question', ['pertanyaan' => $pertanyaan]);
 	}
 
     public function store(Request $request)

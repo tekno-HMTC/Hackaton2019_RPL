@@ -13,9 +13,15 @@
                                 <h3 class="mt-2">{{Auth::user()->name}}</h3>
                                 <p>{{Auth::user()->nrp}}</p>
                                 <div class="row justify-content-center">
+<<<<<<< HEAD
                                     <a class="btn btn-primary btn-sm mr-2" href="{{ url('pertanyaan') }}">Questions <strong>10</strong></a>
                                     <a class="btn btn-warning btn-sm" href="#menu2">Answers <strong>10</strong></a>
                                     <a class="btn btn-success btn-sm ml-2"  href="{{ url('artikel')}}">Articles <strong>10</strong></a>
+=======
+                                    <a class="btn btn-primary btn-sm mr-2" href="{{ url('pertanyaan') }}"><strong>Questions</strong></a>
+                                    <a class="btn btn-warning btn-sm" href="#menu2"><strong>Answers</strong></a>
+                                    <a class="btn btn-success btn-sm ml-2"  href="#menu3"><strong>Articles</strong></a>
+>>>>>>> master
                                 </div>
                             </div>
                         </div>

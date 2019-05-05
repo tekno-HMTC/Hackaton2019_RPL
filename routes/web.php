@@ -45,6 +45,9 @@ Route::get('/pertanyaan','PertanyaanController@index')->name('pertanyaan');
 Route::post('/pertanyaan/store','PertanyaanController@store')->name('pertanyaan.store');
 Route::get('/pertanyaan/read/{id_pertanyaan}', 'PertanyaanController@read');
 Route::get('/pertanyaan/tambah', 'PertanyaanController@tambah')->name('pertanyaan.tambah');
+Route::get('/pertanyaan/ask_question', 'PertanyaanController@ask_question')->name('pertanyaan.ask_question');
+Route::get('/pertanyaan/vote/{id_pertanyaan}','PertanyaanController@vote')->name('pertanyaan.vote');
+Route::get('/pertanyaan/unvote/{id_pertanyaan}','PertanyaanController@unvote')->name('pertanyaan.unvote');
 
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/', function () {
@@ -52,6 +55,7 @@ Route::group(['middleware' => ['auth']], function() {
     });
 
 	Route::get('/artikel', 'ArtikelController@index');
+<<<<<<< HEAD
     Route::get('/buat_artikel', 'ArtikelController@buat_artikel');
     Route::post('/post_artikel', 'ArtikelController@store')->name('post.store');
 
@@ -61,3 +65,25 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/post/{post}', 'ArtikelController@show');
     Route::post('/komen/', 'ArtikelController@create');
 });
+=======
+	Route::get('/buat_artikel', 'ArtikelController@buat_artikel');
+	Route::post('/post_artikel', 'ArtikelController@store')->name('post.store');
+	// Route::get('/looklocation/{id}','HomeController@looklocation');
+	// Route::post('/editprofile','LoginRegister@editprofile');
+});
+
+Route::post('/answer/store',function(Request $request){
+    // return $request;   		
+    $request->id = Auth::id();
+    $request->upvote = 0;
+    DB::table('answers')->insert([
+        'id_user' => $request->id,
+        'id_pertanyaan' => $request->id_pertanyaan,
+        'body' => $request->jawaban,
+        'upvote' => $request->upvote,
+    ]);
+    
+    return 	redirect()->back();
+    
+})->name('answer.store');
+>>>>>>> master
