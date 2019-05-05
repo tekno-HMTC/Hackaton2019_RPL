@@ -82,8 +82,10 @@
                 </div>
               </div>
             </div>
+
         </div>
         @endforeach
+        {{$pertanyaan->links()}}
 </div>
           <div class="table-responsive col-md-12">
             
