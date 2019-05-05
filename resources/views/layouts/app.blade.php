@@ -35,7 +35,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">WK WK WK<sup></sup></div>
+        <div class="sidebar-brand-text mx-3">TC~OVERFLOW<sup></sup></div>
       </a>
 
       <!-- Divider -->

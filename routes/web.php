@@ -49,6 +49,10 @@ Route::get('/pertanyaan/ask_question', 'PertanyaanController@ask_question')->nam
 Route::get('/pertanyaan/vote/{id_pertanyaan}','PertanyaanController@vote')->name('pertanyaan.vote');
 Route::get('/pertanyaan/unvote/{id_pertanyaan}','PertanyaanController@unvote')->name('pertanyaan.unvote');
 
+Route::get('/jawaban/vote/{id_pertanyaan}','AnswerController@vote')->name('jawaban.vote');
+Route::get('/jawaban/unvote/{id_pertanyaan}','AnswerController@unvote')->name('jawaban.unvote');
+
+
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/', function () {
         return redirect('/home');
