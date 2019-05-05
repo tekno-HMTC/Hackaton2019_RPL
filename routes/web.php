@@ -55,7 +55,6 @@ Route::group(['middleware' => ['auth']], function() {
     });
 
 	Route::get('/artikel', 'ArtikelController@index');
-<<<<<<< HEAD
     Route::get('/buat_artikel', 'ArtikelController@buat_artikel');
     Route::post('/post_artikel', 'ArtikelController@store')->name('post.store');
 
@@ -64,12 +63,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/post/delete/{post}', 'ArtikelController@delete');
     Route::get('/post/{post}', 'ArtikelController@show');
     Route::post('/komen/', 'ArtikelController@create');
-});
-=======
-	Route::get('/buat_artikel', 'ArtikelController@buat_artikel');
-	Route::post('/post_artikel', 'ArtikelController@store')->name('post.store');
-	// Route::get('/looklocation/{id}','HomeController@looklocation');
-	// Route::post('/editprofile','LoginRegister@editprofile');
 });
 
 Route::post('/answer/store',function(Request $request){
