@@ -17,6 +17,8 @@
 
   <!-- Custom styles for this template-->
   <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+  <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
   @yield('style')
 </head>
 
@@ -29,7 +31,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('home')}}">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>

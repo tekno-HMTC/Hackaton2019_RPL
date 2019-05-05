@@ -58,7 +58,15 @@
     .m-b-20 {
         margin-bottom: 20px;
     }
-
+    .m-b-50 {
+        margin-bottom: 50px;
+    }
+    .m-t-70 {
+        margin-top: 70px;
+    }
+    .m-t-50 {
+        margin-top: 50px;
+    }
     .list-no-style {
         list-style: none;
         list-style-type: none;
@@ -118,11 +126,11 @@
             </form>
         </div>
     </div>
-    <div id="answer-header" class="p-15 mb-1">
+    <div id="answer-header" class="p-15 mb-1 m-t-50">
         <h5>{{ count($jawaban) }} Answers</h5>
     </div>
     @foreach ($jawaban as $data)
-    <div id="answer-view">
+    <div id="answer-view" style="margin-bottom: 30px;">
             <div class="post-layout row p-10">
                 <div class="votecell col-auto text-center" style="margin-left: 20px;">
                     <i class="fas fa-angle-up icon-7x"></i>
@@ -166,19 +174,25 @@
         </div>
     @endforeach
 </div>
-<form action="{{ route('answer.store')}}" method="post" class="" enctype="multipart/form-data">
+<form action="{{ route('answer.store')}}" method="post" class="m-t-70" enctype="multipart/form-data">
     {{ csrf_field()}}
+    <input type="hidden" name="id_pertanyaan" value="{{ $pertanyaan->id_pertanyaan }}">
     <div class="form-group has-feedback">
-        <input type="hidden" name="id_pertanyaan" value="{{ $pertanyaan->id_pertanyaan }}">
         <label for="" class="tex" style="font-size: 20px;">Jawaban</label>
-        <textarea class="form-control inp" name="jawaban" id='article-ckeditor' cols="" rows="5"
-            placeholder="jawaban" required></textarea>
-
+        <textarea class="form-control inp" name="jawaban" id="text-editor" cols="" rows="10"
+            placeholder="jawaban" ></textarea>
     </div>
     <div class="form-group">
         <input type="submit" value="Kirim" class="btn btn-md btn-primary">
     </div>
 </form>
+
+<script>
+var simplemde = new SimpleMDE({ 
+    element: document.getElementById("text-editor"),
+    hideIcons: ["guide", "heading","fullscreen","side-by-side"],
+});
+</script>
 <script src="{{ asset('js/marked.js') }}"></script>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 @endsection
