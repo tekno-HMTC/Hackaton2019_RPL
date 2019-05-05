@@ -47,6 +47,7 @@ Route::get('/pertanyaan/read/{id_pertanyaan}', 'PertanyaanController@read');
 Route::get('/pertanyaan/tambah', 'PertanyaanController@tambah')->name('pertanyaan.tambah');
 Route::get('/pertanyaan/ask_question', 'PertanyaanController@ask_question')->name('pertanyaan.ask_question');
 Route::get('/pertanyaan/vote/{id_pertanyaan}','PertanyaanController@vote')->name('pertanyaan.vote');
+Route::get('/pertanyaan/unvote/{id_pertanyaan}','PertanyaanController@unvote')->name('pertanyaan.unvote');
 
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/', function () {
