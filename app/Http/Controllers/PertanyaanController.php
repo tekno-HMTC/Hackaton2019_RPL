@@ -39,7 +39,11 @@ class PertanyaanController extends Controller
 		
 		$jawaban = DB::table('answers')->where('id_pertanyaan', $id)->get();
 		
-		// return $jawaban;
+		foreach($jawaban as $data){
+			$data->komentar = DB::table('comments')->where([['id_tanya_jawab', $data->id_jawaban],['flag', '2']])->get();
+		}
+
+		// dd($jawaban);
 
 		return view('/pertanyaan/read', ['pertanyaan' => $pertanyaan],['jawaban' => $jawaban ]);
 	}

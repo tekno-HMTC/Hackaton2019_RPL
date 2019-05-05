@@ -139,7 +139,11 @@
                         <span class="badge tag">laravel</span>
                     </div>
                     <ul class="list-no-style p-0 mt-1">
-                        <li class="mb-1 komen" id="komen2"></li>
+                        @foreach ($data->komentar as $item)
+                            <li class="mb-1 komen" id="komen2">
+                                <p>{{ $item->komentar }}</p>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -149,7 +153,7 @@
                 <form action="{{ route('comment.create')}}" method="post" class="" enctype="multipart/form-data">
                     {{ csrf_field()}}
                     <input type="hidden" name="id" value="{{ $data->id_jawaban }}">
-                    <input type="hidden" name="flag" value="1">
+                    <input type="hidden" name="flag" value="2">
                     <div class="form-group">
                         <textarea class="form-control inp" name="komentarmu" id='article-ckeditor' cols="" rows="3"
                             placeholder="komentarmu" required></textarea>

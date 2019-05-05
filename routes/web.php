@@ -71,6 +71,6 @@ Route::post('/answer/store',function(Request $request){
         'upvote' => $request->upvote,
     ]);
     
-    return $request;
+    return 	redirect()->back();
     
 })->name('answer.store');

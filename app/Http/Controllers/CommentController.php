@@ -51,7 +51,7 @@ class CommentController extends Controller
 
         $comment->save();
         // dd($id_user);
-        return $comment;
+        return 	redirect()->back();
     }
 
     /**
