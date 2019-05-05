@@ -121,10 +121,10 @@
     <div id="answer-view">
             <div class="post-layout row p-10">
                 <div class="votecell col-auto text-center" style="margin-left: 20px;">
-                    <i class="fas fa-angle-up icon-7x"></i>
+                    <a href="{{ URL('/jawaban/vote/'.$data->id_jawaban )}}"><i class="fas fa-angle-up icon-7x"></i></a>
                     <p class="voter">{{$data->upvote}}</p>
                     <p>voter</p>
-                    <i class="fas fa-angle-down icon-3x"></i>
+                    <a href="{{ URL('/jawaban/unvote/'.$data->id_jawaban )}}"><i class="fas fa-angle-down icon-3x"></i></a>
                 </div>
                 <div class="postcell col">
                     <div id="data">
